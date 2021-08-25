@@ -1,5 +1,5 @@
 {
-  "name": "bolt",
+  "name": "bolt-yarn-supported",
   "version": "0.24.9",
   "main": "index.js",
   "author": "James Kyle <me@thejameskyle.com>",

@@ -219,8 +219,19 @@ export default class Config {
 
   getBoltConfig(): { [key: string]: JSONValue } | void {
     let config = this.getConfig();
-    let boltConfig = config.bolt;
+    let boltConfig;
+    if (config.workspaces) {
+      // Yarn workspace
+      boltConfig = {
+        version: '1000.0.0',
+        workspaces: config.workspaces
+      };
+    } else {
+      boltConfig = config.bolt;
+    }
+
     if (typeof boltConfig === 'undefined') return;
+
     return toObject(
       boltConfig,
       `package.json#bolt must be an object. See "${this.filePath}"`
